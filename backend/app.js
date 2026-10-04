@@ -8,12 +8,25 @@ import projectsRouter from "./routes/projects.js";
 
 const app = express();
 const backendDirectory = path.dirname(fileURLToPath(import.meta.url));
-const configuredOrigins = process.env.CLIENT_ORIGIN?.split(",").map((origin) => origin.trim()).filter(Boolean) || [];
+const configuredOrigins = (process.env.CLIENT_ORIGIN || "")
+  .split(",")
+  .map((origin) => {
+    try {
+      return new URL(origin.trim()).origin;
+    } catch {
+      return "";
+    }
+  })
+  .filter(Boolean);
 const allowedOrigins = process.env.NODE_ENV === "production"
   ? configuredOrigins
   : [...new Set([...configuredOrigins, "http://localhost:5173", "http://127.0.0.1:5173"])];
 
-app.use(cors({ origin: allowedOrigins?.length ? allowedOrigins : true }));
+if (process.env.NODE_ENV === "production" && allowedOrigins.length === 0) {
+  console.warn("CORS is not configured. Set CLIENT_ORIGIN to the deployed frontend origin in the production environment.");
+}
+
+app.use(cors({ origin: allowedOrigins.length ? allowedOrigins : process.env.NODE_ENV !== "production" }));
 app.use(express.json({ limit: "100kb" }));
 app.use("/uploads", express.static(path.join(backendDirectory, "uploads")));
 
