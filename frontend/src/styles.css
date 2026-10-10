@@ -76,18 +76,17 @@ button {
 
 .logo-image {
     display: block;
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    background: #fff;
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
     border-radius: 50%;
-    mix-blend-mode: normal
+    mix-blend-mode: multiply
 }
 
 .logo-name {
     display: flex;
-    align-items: center;
-    gap: 4px;
+    flex-direction: column;
+    gap: 1px;
     text-align: left;
     font: 800 14px/1.05 Manrope, system-ui, sans-serif;
     letter-spacing: .055em
@@ -892,7 +891,20 @@ em {
     text-decoration: none
 }
 
-.route-brand .logo-name { font-size: 14px }
+.route-brand .logo-image {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    background: #fff;
+    mix-blend-mode: normal
+}
+
+.route-brand .logo-name {
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px
+}
 .route-brand .logo-name strong:last-child { color: #fff }
 
 .route-nav nav { display: flex; gap: 28px }
