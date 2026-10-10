@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Play, Sparkles, Menu, X, Instagram, Linkedin, Twitter } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Play, Sparkles, Menu, X, Instagram, Facebook, Linkedin } from "lucide-react";
 import heroVideo from "../assets/hero.mp4";
 import logoImage from "../assets/icon.png";
 import { getProjects } from "../app/api.js";
@@ -174,7 +174,7 @@ export default function HomePage() {
           <Reveal className="section-kicker">/ WHO WE ARE</Reveal>
           <Reveal><h2 className="huge">We turn attention<br />into <em>action.</em></h2></Reveal>
           <div className="intro-bottom">
-            <Reveal><div className="lead"><p>We’re <strong className="founder-name">Sudhanshu</strong> and <strong className="founder-name">Avinash</strong>, the founders of <span className="purple-gradient-text">Purple Octopus</span>. We started this digital marketing agency to help ambitious brands find their voice, connect with the right people and grow with purpose.</p><p>From social media and content to search and performance campaigns, we bring strategy, creative and data together. We shape clear plans, make useful and memorable work, then keep learning from the results so every next move works harder for the business.</p></div></Reveal>
+            <Reveal><div className="lead"><p>We’re <strong className="founder-name">Sudhanshu</strong> and <strong className="founder-name">Avinash</strong>, the founders of <span className="purple-gradient-text">Purple Octopus</span>. We started this platform to help ambitious brands find their voice, connect with the right people and grow with purpose.</p><p>From social media and content to search and performance campaigns, we bring strategy, creative and data together. We shape clear plans, make useful and memorable work, then keep learning from the results so every next move works harder for the business.</p></div></Reveal>
             <Reveal delay=".12"><img className="parallax-img rounded" src={MEDIA.team} alt="Creative team collaborating" /></Reveal>
           </div>
         </section>
@@ -221,11 +221,11 @@ export default function HomePage() {
               {work.map((item, i) => {
                 return <article className="work-card" key={item._id || `${item.client}-${i}`}>
                   <div className="instagram-profile">
-                    <img className="instagram-avatar" src={item.avatar} alt={`${item.client} avatar`} />
+                    <img className="instagram-avatar" src={item.avatar} alt={`${item.client} avatar`} loading="lazy" decoding="async" />
                     <div><strong>{item.client}</strong><span>{item.handle}</span></div>
                     {item.profileUrl && <a className="work-profile-link" href={item.profileUrl} target="_blank" rel="noreferrer">View ↗</a>}
                   </div>
-                  <div className="work-image"><img className="parallax-img" src={item.image} alt={`${item.client} profile picture`} /></div>
+                  <div className="work-image"><img className="parallax-img" src={item.image} alt={`${item.client} profile picture`} loading="lazy" decoding="async" /></div>
                   <div className="instagram-stats">
                     <span><strong>{formatFollowers(item.followers)}</strong> followers</span>
                   </div>
@@ -250,7 +250,11 @@ export default function HomePage() {
           <div className="section-kicker">/ HAVE A CHALLENGE?</div>
           <h2>Let's make<br /><em>something loud.</em></h2>
           <a className="button primary giant" href="mailto:purpleoctopus@outlook.in">purpleoctopus@outlook.in <ArrowUpRight /></a>
-          <div className="contact-foot"><span>Gorakhpur · Noida · Everywhere</span><div className="socials"><Instagram /><Linkedin /><Twitter /></div><span>© 2026 Purple Octopus</span></div>
+          <div className="contact-foot"><span>Gorakhpur · Noida · Everywhere</span><div className="socials">
+            <a href="https://www.instagram.com/we.purpleoctopus/" target="_blank" rel="noopener noreferrer" aria-label="Purple Octopus on Instagram"><Instagram /></a>
+            <a href="https://www.facebook.com/profile.php?id=61594846217562" target="_blank" rel="noopener noreferrer" aria-label="Purple Octopus on Facebook"><Facebook /></a>
+            <a href="https://www.linkedin.com/company/we-purple-octopus/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="Purple Octopus on LinkedIn"><Linkedin /></a>
+          </div><span>© 2026 Purple Octopus</span></div>
         </section>
       </main>
 

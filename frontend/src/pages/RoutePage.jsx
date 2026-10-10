@@ -103,7 +103,7 @@ export default function RoutePage({ page }) {
         <div className="section-kicker">/ {page.eyebrow}</div>
         <h1>{page.title.split("\n").map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}</h1>
         <p>{page.description}</p>
-        {page.items.length > 0 && <ul>{page.items.map((item) => <li key={item}>{item.includes("@") ? <a href={`mailto:${item}`}>{item}</a> : item}</li>)}</ul>}
+        {page.kind !== "service" && page.items.length > 0 && <ul>{page.items.map((item) => <li key={item}>{item.includes("@") ? <a href={`mailto:${item}`}>{item}</a> : item}</li>)}</ul>}
         <a className="button primary" href="/contact" data-nav>Start a project <span aria-hidden="true">↗</span></a>
       </section>
       {page.kind === "service" && <ServiceDetails page={page} />}

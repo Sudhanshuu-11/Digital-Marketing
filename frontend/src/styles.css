@@ -76,17 +76,18 @@ button {
 
 .logo-image {
     display: block;
-    width: 54px;
-    height: 54px;
-    object-fit: cover;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    background: #fff;
     border-radius: 50%;
-    mix-blend-mode: multiply
+    mix-blend-mode: normal
 }
 
 .logo-name {
     display: flex;
-    flex-direction: column;
-    gap: 1px;
+    align-items: center;
+    gap: 4px;
     text-align: left;
     font: 800 14px/1.05 Manrope, system-ui, sans-serif;
     letter-spacing: .055em
@@ -847,6 +848,24 @@ em {
     gap: 15px
 }
 
+.socials a {
+    display: inline-flex;
+    color: inherit;
+    transition: color .2s ease, transform .2s ease
+}
+
+.socials a:hover,
+.socials a:focus-visible {
+    color: #b17aff;
+    transform: translateY(-2px)
+}
+
+.socials a:focus-visible {
+    outline: 2px solid #b17aff;
+    outline-offset: 4px;
+    border-radius: 2px
+}
+
 .route-site {
     min-height: 100vh;
     background: #18111f;
@@ -863,6 +882,9 @@ em {
 }
 
 .route-brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
     color: #a56cff;
     font-size: 14px;
     font-weight: 800;
@@ -870,7 +892,8 @@ em {
     text-decoration: none
 }
 
-.route-brand span { color: #fff }
+.route-brand .logo-name { font-size: 14px }
+.route-brand .logo-name strong:last-child { color: #fff }
 
 .route-nav nav { display: flex; gap: 28px }
 
@@ -1471,17 +1494,16 @@ em {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border: 1px solid #d9d2dd;
+    border: 1px solid #211729;
     border-radius: 14px;
-    color: inherit;
+    background: #211729;
+    color: #fff;
     text-decoration: none;
     transition: transform .25s ease, background .25s ease, color .25s ease
 }
 
 .service-route-card:hover {
     transform: translateY(-4px);
-    background: #211729;
-    color: #fff
 }
 
 .service-route-number {
@@ -1497,12 +1519,10 @@ em {
 
 .service-route-card p {
     margin: 0 0 22px;
-    color: #716977;
+    color: #c7bacf;
     font-size: 14px;
     line-height: 1.6
 }
-
-.service-route-card:hover p { color: #c7bacf }
 
 .service-route-link {
     margin-top: auto;

@@ -14,8 +14,17 @@ export async function createInquiry(payload) {
 export async function getProjects() {
   const response = await axios.get(`${apiBaseUrl}/api/projects`);
   return (response.data.data || []).map((project) => {
-    const imageUrl = (value) => value && value.startsWith("/") ? `${apiBaseUrl}${value}` : value;
-    return { ...project, image: imageUrl(project.image), avatar: imageUrl(project.avatar) };
+    const imageUrl = (value, width, crop) => {
+      if (!value) return value;
+      const url = value.startsWith("/") ? `${apiBaseUrl}${value}` : value;
+      if (!url.includes("res.cloudinary.com/") || !url.includes("/image/upload/")) return url;
+      return url.replace("/image/upload/", `/image/upload/f_auto,q_auto,w_${width},${crop}/`);
+    };
+    return {
+      ...project,
+      image: imageUrl(project.image, 1200, "c_limit"),
+      avatar: imageUrl(project.avatar, 160, "c_fill,g_face"),
+    };
   });
 }
 

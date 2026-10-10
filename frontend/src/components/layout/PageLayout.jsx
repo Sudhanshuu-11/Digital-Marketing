@@ -1,4 +1,5 @@
 import React from "react";
+import logoImage from "../../assets/icon.png";
 
 const navItems = [
   ["Home", "/"],
@@ -12,7 +13,10 @@ export default function PageLayout({ children }) {
   return (
     <div className="route-site">
       <header className="route-nav">
-        <a className="route-brand" href="/" data-nav>PURPLE <span>OCTOPUS</span></a>
+        <a className="route-brand" href="/" data-nav aria-label="Purple Octopus home">
+          <img className="logo-image" src={logoImage} alt="" />
+          <span className="logo-name"><strong>PURPLE</strong><strong>OCTOPUS</strong></span>
+        </a>
         <nav aria-label="Main navigation">
           {navItems.map(([label, path]) => <a href={path} data-nav key={path}>{label}</a>)}
         </nav>
